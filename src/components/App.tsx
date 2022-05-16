@@ -1,4 +1,3 @@
-import React, { useCallback, useEffect, useState } from "react";
 import { Todo, fetchTodos } from "../actions";
 import { StoreState } from "../reducers";
 import { connect } from "react-redux";
@@ -7,12 +6,11 @@ interface AppProps {
   todos: {isLoading: boolean, todos: Todo[]};
   fetchTodos: Function;
 }
-const _App = (props: AppProps): JSX.Element => {
+const _App = (props: AppProps)=> {
   const {isLoading, todos} = props.todos;
   const onButtonClick = (): void => {
     props.fetchTodos();
   };
-
 
   const renderList = () => {
     return todos.map((todo) => (
@@ -36,6 +34,3 @@ const mapStateToProps = ({ todos }: StoreState) => {
 };
 
 export const App = connect(mapStateToProps, { fetchTodos })(_App);
-// export function App1(props: AppProps): JSX.Element {
-//   return <div> Hello {props.color}</div>;
-// }

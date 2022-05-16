@@ -14,6 +14,9 @@ export function todoReducer(state = todoState, action: Action) {
     case ActionTypes.FETCH_TODO_FULFILLED:
       return {...state, isLoading: false, todos: action.payload};
 
+    case ActionTypes.FETCH_TODO_REJECTED:
+          return {...state, isLoading: false}
+          
     default:
       return state;
   }

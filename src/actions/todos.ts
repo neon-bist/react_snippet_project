@@ -11,6 +11,9 @@ export interface Todo {
 export interface FetchTodoPendingAction {
   type: ActionTypes.FETCH_TODO_PENDING;
 }
+export interface FetchTodoRejectedAction {
+  type: ActionTypes.FETCH_TODO_REJECTED;
+}
 export interface FetchTodoFulfilledAction {
   type: ActionTypes.FETCH_TODO_FULFILLED;
   payload: Todo[];
@@ -22,6 +25,7 @@ export function fetchTodos() {
     dispatch<FetchTodoPendingAction>({
       type: ActionTypes.FETCH_TODO_PENDING
     });
+    try{
     const response = await new Promise<{ data: Todo[] }>((resolve) => {
       setTimeout(() => resolve({ data: todos }), 3000);
     });
@@ -29,6 +33,9 @@ export function fetchTodos() {
       type: ActionTypes.FETCH_TODO_FULFILLED,
       payload: response.data,
     });
+  }catch(e){
+    dispatch({type: ActionTypes.FETCH_TODO_REJECTED})
+  }
   };
 }
 
