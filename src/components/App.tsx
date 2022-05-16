@@ -3,11 +3,11 @@ import { StoreState } from "../reducers";
 import { connect } from "react-redux";
 
 interface AppProps {
-  todos: {isLoading: boolean, todos: Todo[]};
+  todos: {errorMsg: string, isLoading: boolean, todos: Todo[]};
   fetchTodos: Function;
 }
 const _App = (props: AppProps)=> {
-  const {isLoading, todos} = props.todos;
+  const {isLoading,errorMsg, todos} = props.todos;
   const onButtonClick = (): void => {
     props.fetchTodos();
   };
@@ -24,6 +24,7 @@ const _App = (props: AppProps)=> {
     <div>
       <button onClick={onButtonClick}>Fetch</button>
       {isLoading && "Loading...."}
+      {errorMsg && <span style={{color:'red'}}>{errorMsg}</span>}
       {renderList()}
     </div>
   );
