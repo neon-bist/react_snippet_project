@@ -29,7 +29,14 @@ export const FlexContainer: FC<Props> = (
   }
 ) => {
   const _align = align == 'start' ? 'alignStart' : 'alignEnd';
-  const classes = [styles.flexContainer, align && styles[_align], justify && styles[justify], styles[direction], fill && styles.fill].join(' ');
+  const classes = [
+    styles.flexContainer,
+    align && styles[_align],
+    justify && styles[justify],
+    styles[direction],
+    fill && styles.fill
+  ].join(' ');
+
   return (
     <div {...props} className={classes}>{children}</div>
   )

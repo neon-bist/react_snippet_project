@@ -3,6 +3,7 @@ import { StoreState } from "../reducers";
 import { connect } from "react-redux";
 import { Button } from "./Button";
 import { FlexContainer } from "./FlexContainer/FelxContainer";
+import { Carousel } from "./Carousel/Carousel";
 
 interface AppProps {
   todos: { errorMsg: string, isLoading: boolean, todos: Todo[] };
@@ -28,6 +29,11 @@ const _App = (props: AppProps) => {
       {isLoading && "Loading...."}
       {errorMsg && <span style={{ color: 'red' }}>{errorMsg}</span>}
       <FlexContainer align="start" direction="col">{renderList()}</FlexContainer>
+      <Carousel images={[
+        "https://picsum.photos/id/17/700/400",
+        "https://picsum.photos/id/37/700/400",
+        "https://picsum.photos/id/23/700/400"
+      ]} height="400px" width="50%" />
     </div>
   );
 };
