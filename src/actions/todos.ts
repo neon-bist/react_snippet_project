@@ -28,10 +28,10 @@ export function fetchTodos() {
       type: ActionTypes.FETCH_TODO_PENDING
     });
     try{
-    // const response = await new Promise<{ data: Todo[] }>((resolve) => {
-    //   setTimeout(() => resolve({ data: todos }), 3000);
-    // });
-    const response = await axios.get('/todos');
+    const response = await new Promise<{ data: Todo[] }>((resolve) => {
+      setTimeout(() => resolve({ data: todos }), 3000);
+    });
+    // const response = await axios.get('/todos');
     dispatch<FetchTodoFulfilledAction>({
       type: ActionTypes.FETCH_TODO_FULFILLED,
       payload: response.data,

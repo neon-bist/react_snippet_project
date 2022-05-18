@@ -7,3 +7,6 @@ export const spaceAround: string;
 export const center: string;
 export const row: string;
 export const col: string;
+export const fill: string;
+export const alignStart: string;
+export const alignEnd: string;

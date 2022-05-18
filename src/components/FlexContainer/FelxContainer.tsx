@@ -9,22 +9,28 @@ export type flexJustify = 'end'
   | 'start'
 
 export type flexDirection = 'row' | 'col'
+export type flexAlign = 'start' | 'end'
 
 interface Props extends ComponentProps<'div'> {
   direction?: flexDirection,
-  justify?: flexJustify
+  justify?: flexJustify,
+  align?: flexAlign,
+  fill?: boolean
 }
 
-export const FlexContainer:FC<Props> = (
+export const FlexContainer: FC<Props> = (
   {
-    direction='row', 
-    children, 
-    justify, 
+    direction = 'row',
+    children,
+    justify,
+    align,
+    fill,
     ...props
   }
-  ) => {
-    const classes = [styles.flexContainer, justify && styles[justify], styles[direction]].join(' ');
-    return (
+) => {
+  const _align = align == 'start' ? 'alignStart' : 'alignEnd';
+  const classes = [styles.flexContainer, align && styles[_align], justify && styles[justify], styles[direction], fill && styles.fill].join(' ');
+  return (
     <div {...props} className={classes}>{children}</div>
-    )
-  }
+  )
+}

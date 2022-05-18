@@ -1,13 +1,15 @@
 import { Todo, fetchTodos } from "../actions";
 import { StoreState } from "../reducers";
 import { connect } from "react-redux";
+import { Button } from "./Button";
+import { FlexContainer } from "./FlexContainer/FelxContainer";
 
 interface AppProps {
-  todos: {errorMsg: string, isLoading: boolean, todos: Todo[]};
+  todos: { errorMsg: string, isLoading: boolean, todos: Todo[] };
   fetchTodos: Function;
 }
-const _App = (props: AppProps)=> {
-  const {isLoading,errorMsg, todos} = props.todos;
+const _App = (props: AppProps) => {
+  const { isLoading, errorMsg, todos } = props.todos;
   const onButtonClick = (): void => {
     props.fetchTodos();
   };
@@ -22,10 +24,10 @@ const _App = (props: AppProps)=> {
 
   return (
     <div>
-      <button onClick={onButtonClick}>Fetch</button>
+      <Button onClick={onButtonClick}>Fetch</Button>
       {isLoading && "Loading...."}
-      {errorMsg && <span style={{color:'red'}}>{errorMsg}</span>}
-      {renderList()}
+      {errorMsg && <span style={{ color: 'red' }}>{errorMsg}</span>}
+      <FlexContainer align="start" direction="col">{renderList()}</FlexContainer>
     </div>
   );
 };

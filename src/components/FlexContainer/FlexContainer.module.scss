@@ -1,37 +1,51 @@
-.flexContainer{
+.flexContainer {
   display: flex;
   box-sizing: border-box;
   align-items: center;
+  gap: 3px;
+  padding: 1rem;
 
-  &.row{
+  &.row {
     flex-direction: row;
   }
 
-  &.col{
+  &.col {
     flex-direction: column;
   }
 
-  &.center{
+  &.center {
     justify-content: center;
   }
 
-  &.end{
+  &.end {
     justify-content: end;
   }
 
-  &.spaceAround{
+  &.spaceAround {
     justify-content: space-around;
   }
 
-  &.spaceBetween{
-  justify-content: space-between;
-  }
-  
-  &.spaceEven{
-  justify-content: space-evenly;
+  &.spaceBetween {
+    justify-content: space-between;
   }
 
-  &.start{
+  &.spaceEven {
+    justify-content: space-evenly;
+  }
+
+  &.start {
     justify-content: start;
+  }
+
+  &.fill {
+    width: 100%;
+  }
+
+  &.alignStart {
+    align-items: flex-start;
+  }
+
+  &.alignEnd {
+    align-items: flex-end;
   }
 }

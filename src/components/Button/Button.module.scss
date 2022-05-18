@@ -1,13 +1,16 @@
-.button{
+@import "../constants.scss";
+
+.btn{
   padding: .5rem 1rem;
   border-radius: 5px;
 
   &.primary{
-    background-color: royalblue;
+    background-color: $primary-color;
+    color:white;
   }
 
-  &.secondray{
-    background-color: coral;
+  &.secondary{
+    background-color: $secondary-color;
   }
 
   &.disabled{
